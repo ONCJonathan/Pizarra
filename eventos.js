@@ -31,8 +31,8 @@ function dibujarLinea(Color, xInicial, yInicial, xFinal, yFinal, lienzo)
 function dibujarConTeclado(evento)
 {
     var codigoDeTecla = evento.keyCode;
-    var colorcito = "green";
-    var movimiento = 1;
+    var colorcito = "blue";
+    var movimiento = 10;
 
     switch (codigoDeTecla) {
         case flechas.UP:
