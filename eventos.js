@@ -7,15 +7,19 @@ var flechas = {
   LEFT: 37,
   RIGHT: 39
 };
-var x = 100;
-var y = 100;
+var palanquita = false;
+var xi = 0;
+var yi = 0;
 
 /* Invocando Funciones: */
 console.log(flechas);
 
-document.addEventListener("keydown", dibujarConTeclado);
+// document.addEventListener("keydown", dibujarConTeclado);
+cuadrito.addEventListener("mousedown", dibujarConMouse);
+cuadrito.addEventListener("mousemove", dibujarConMouseMove);
+document.addEventListener("mouseup", dibujarConMouseUp);
 
-dibujarLinea("red", x - 1, y - 1, x + 1, y + 1, papelParaDibujar);
+
 
 /* Declaracion de Funciones: */
 function dibujarLinea(Color, xInicial, yInicial, xFinal, yFinal, lienzo) {
@@ -28,14 +32,65 @@ function dibujarLinea(Color, xInicial, yInicial, xFinal, yFinal, lienzo) {
   lienzo.lineTo(xFinal, yFinal);
 
   lienzo.stroke();
+
 }
 
-function dibujarConTeclado(evento) {
+function dibujarConMouseUp (evento) {
+ palanquita = false;
+
+}
+
+
+
+function dibujarConMouse (evento) {
+   palanquita = true;
+   xi = evento.clientX;
+   yi = evento.clientY;
+
+   
+
+}
+
+function dibujarConMouseMove (evento) {
+  var xf = evento.clientX;
+  var yf = evento.clientY;
+
+
+  if (palanquita == true) {
+
+    dibujarLinea("green", xi , yi, xf , yf , papelParaDibujar);
+    console.log(evento);
+
+
+    
+  }
+
+  xi = xf ;
+  yi = yf ;
+
+
+  
+    
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+/*function dibujarConTeclado(evento) {
   var codigoDeTecla = evento.keyCode;
   var colorcito = "blue";
   var movimiento = 10;
 
-  switch (codigoDeTecla) {
+  palanquita (codigoDeTecla) {
     case flechas.UP:
       dibujarLinea(colorcito, x, y, x, y - movimiento, papelParaDibujar);
       y = y - movimiento;
@@ -56,5 +111,5 @@ function dibujarConTeclado(evento) {
     default:
       console.log("otra tecla");
       break;
-  }
-}
+  } 
+} */
